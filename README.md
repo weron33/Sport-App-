@@ -5,6 +5,8 @@ To run app You should type:
 python main.py
 in Your console while You are in this folder.
 
+App is written in polish. 
+
 Exercise to do contains 6 distances: [5,10,15,20,25,30][m].
 After You press Start button the app display one of above distances as a bigger numbers.
 You should run as fast as You can until You reach this distance. Then slowly come back to the begining.
