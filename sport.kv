@@ -1,0 +1,102 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+<RootScreen>:
+    transition: FadeTransition()
+    StartScreen:
+    MainScreen:
+
+<StartScreen>:
+    name: "start"
+    canvas.before:
+
+        Rectangle:
+            size: 800, 600
+            pos: 100, 0
+            source: "Vegeta.jpg"
+
+    Label:
+        text: "Wybierz trening"
+        font_size: 40
+        pos: -40,30
+        size: 50,50
+
+    Button:
+        text: "Sprinty"
+        pos_hint: {"x":0.3, "y":0.325}
+        font_size: 40
+        size_hint: 0.3, 0.15
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "left"
+
+<MainScreen>:
+    name: "main"
+    canvas.before:
+
+        Rectangle:
+            size: 800, 600
+            pos: 100, 0
+            source: "Vegeta.jpg"
+
+    iter: iter
+    dist: dist
+
+    GridLayout:
+        cols: 2
+        pos_hint: {"x":0.3, "y":0.5}
+        size_hint: 0.3, 0.2
+
+        Label:
+            text: "Bieg"
+            font_size: 20
+            pos: 10,10
+            size: 50,50
+
+        Label:
+            text: "Dystans"
+            font_size: 20
+            pos: 10,10
+            size: 50,50
+
+        Label:
+            id: iter
+            text: "0"
+            font_size: 20
+
+        Label:
+            id: dist
+            text: "0"
+            font_size: 50
+
+    Button:
+        id: start_button
+        text: "Start"
+        pos_hint: {"x":0.3, "y":0.325}
+        font_size: 40
+        size_hint: 0.3, 0.15
+        on_release: root.start_button()
+
+    Button
+        id: help_button
+        text: "?"
+        pos_hint: {"x":0.6, "y":0.8}
+        font_size: 10
+        size_hint: 0.02, 0.02
+        on_release: root.help_button()
+
+    Button:
+        id: back_button
+        text: "Wstecz"
+        pos_hint: {"x":0.1, "y":0.1}
+        font_size: 20
+        size_hint: 0.15, 0.1
+        on_release:
+            app.root.current = "start"
+            root.manager.transition.direction = "down"
+
+<Popups>:
+    title: 'Opis ćwiczenia'
+    pos_hint: {"x":0.2, "y":0.35}
+    size_hint: (0.7,0.4)
+    Label:
+        text: "1) Rozłóż 7 znaczników w lini prostej co 5 metrów.\n2) Wciśnij przycisk START, aby wylosować odległość.\n3) Biegnij sprintem do znacznika z wylosowaną odległością.\n4) Powrót truchtem.\n5) Całość powtórz 10 razy. Odpocznij i jescze 10."
