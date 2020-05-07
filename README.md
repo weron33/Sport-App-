@@ -1,4 +1,4 @@
-# Sprint-App-
+# Sport-App-
 This app was created to allow its user quickly ganerate random distances to sprint. It was design to help in workout.
 
 To run app You should type:
